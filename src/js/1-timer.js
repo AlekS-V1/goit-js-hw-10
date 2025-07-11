@@ -11,11 +11,13 @@ flatpickr("input#datetime-picker", {
   defaultDate: new Date(),    
   minuteIncrement: 1,
   enableSeconds: true,
-  onClose(selectedDates) {      
+  onClose(selectedDates) {
     userSelectedDate = selectedDates[0];    
     console.log("Обраний час:", userSelectedDate); 
     button.disabled = false;
     button.classList.remove("disabled-button");
+    
+    
   },
   
 });
@@ -24,6 +26,8 @@ const button = document.querySelector("button");
 const input = document.querySelector("#datetime-picker");
 
 input.disabled = false;
+button.disabled = true;
+button.classList.add("disabled-button");
 
 const fDays = document.querySelector("span[data-days]");
 const fHours = document.querySelector("span[data-hours]");
