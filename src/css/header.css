@@ -52,7 +52,6 @@ button {
   width: 360px;
   height: 40px;
   background: #4e75ff;
-  margin: 24px 0;
 }
 button:hover {
   background: #6c8cff;
@@ -128,6 +127,7 @@ fieldset {
   padding: 0;
   padding-top: 0px;
   margin: 0;
+  margin-bottom: 24px;
 }
 
 fieldset:hover {
