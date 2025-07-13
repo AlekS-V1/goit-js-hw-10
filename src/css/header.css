@@ -52,6 +52,7 @@ button {
   width: 360px;
   height: 40px;
   background: #4e75ff;
+  margin: 0;
 }
 button:hover {
   background: #6c8cff;

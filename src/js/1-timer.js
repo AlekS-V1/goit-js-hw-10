@@ -12,12 +12,20 @@ flatpickr("input#datetime-picker", {
   minuteIncrement: 1,
   enableSeconds: true,
   onClose(selectedDates) {
-    userSelectedDate = selectedDates[0];    
-    console.log("Обраний час:", userSelectedDate); 
+    userSelectedDate = selectedDates[0];      
+    
+    if (userSelectedDate <= Date.now()) {
+      iziToast.error({
+        title: 'Error',
+        message: 'Please choose a date in the future',
+        position: 'topRight',
+      });
+      button.disabled = true;
+      button.classList.add("disabled-button");
+      return;
+    }
     button.disabled = false;
     button.classList.remove("disabled-button");
-    
-    
   },
   
 });
@@ -26,8 +34,7 @@ const button = document.querySelector("button");
 const input = document.querySelector("#datetime-picker");
 
 input.disabled = false;
-button.disabled = true;
-button.classList.add("disabled-button");
+button.disabled = false;
 
 const fDays = document.querySelector("span[data-days]");
 const fHours = document.querySelector("span[data-hours]");
@@ -47,19 +54,7 @@ class Timer {
     const time = this.convertMs(0);
     this.onTick(time);
   }
-  start() {
-    
-    if (userSelectedDate <= Date.now()) {
-      iziToast.error({
-        title: 'Error',
-        message: 'Please choose a date in the future',
-        position: 'topRight',
-      });
-      button.disabled = true;
-      button.classList.add("disabled-button");
-      return;
-    }
-    
+  start() {   
     
     if (this.isActive) {      
       button.disabled = true;
